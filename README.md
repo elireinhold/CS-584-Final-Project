@@ -5,7 +5,6 @@ The data is extracted from [DevGPT](https://github.com/NAIST-SE/DevGPT).
 To create a working local copy of the clean dataset:
 
 1. Download all files in this repo onto your local machine
-```
 2. Run the collection script:
 ```
    python collect_devgpt.py
