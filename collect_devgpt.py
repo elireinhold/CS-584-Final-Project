@@ -3,7 +3,7 @@ import json
 import csv
 import glob
 
-REPO_PATH = "./DevGPT"
+REPO_PATH = "DevGPT"
 OUTPUT_FILE = "prompt_answer_pairs.csv"
 
 SOURCE_TYPES = [
@@ -18,7 +18,6 @@ SOURCE_TYPES = [
 def extract_conversations(data, source_type, snapshot):
     rows = []
     records = data if isinstance(data, list) else data.get("Sources", [])
-
     for record in records:
         chatgpt_sharings = record.get("ChatgptSharing", [])
         for sharing in chatgpt_sharings:
@@ -53,7 +52,12 @@ for snapshot_dir in sorted(glob.glob(os.path.join(REPO_PATH, "snapshot_*"))):
             print(f"Processing: {filepath}")
             with open(filepath, "r", encoding="utf-8") as f:
                 try:
-                    data = json.load(f)
+                    data = {}
+                    for line in f:
+                        [key, value] = line.split(" ")
+                        if (len(key.strip()) > 0):
+                            data[key.strip()] = value.strip()
+
                     rows = extract_conversations(data, source_type, snapshot_name)
                     all_rows.extend(rows)
                     print(f"  → {len(rows)} rows")
