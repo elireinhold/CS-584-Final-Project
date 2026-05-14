@@ -15,6 +15,9 @@ This project works backwards: given a ChatGPT response, predict what the origina
 ## Poster
 See [`poster.pdf`](./poster.pdf) for the full research poster presented at the symposium.
 
+## Report
+See [`report.pdf`](./report.pdf) for the full research report.
+
 ---
 
 ## Data
